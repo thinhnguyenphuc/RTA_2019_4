@@ -1,6 +1,10 @@
 package com.example.rta_2019_4;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.AsyncTask;
+import android.view.View;
+import android.widget.Toast;
 
 
 import java.io.BufferedReader;
@@ -15,22 +19,25 @@ public class LoadData extends AsyncTask<Integer, Integer, ArrayList<HashMap<Stri
     private int limit;
     private int offset;
     public AsyncReponse delegate = null;
+    private Activity activity;
 
-    public LoadData(int limit, int offset, AsyncReponse asyncReponse){
+    public LoadData(Activity activity, int limit, int offset, AsyncReponse asyncReponse){
         this.limit = limit;
         this.offset = offset;
         this.delegate = asyncReponse;
+        this.activity = activity;
     }
 
     @Override
     protected ArrayList<HashMap<String,String>> doInBackground(Integer... integers) {
         ArrayList<HashMap<String,String>>  result = new ArrayList<HashMap<String, String>>();
-
+        onProgressUpdate(1);
         try {
             result = getFileFromURL("https://rtlab02.rtworkspace.com/api/query/datamodel?dm_name=test_ucdp_ged181&token=secret&limit="+limit+"&offset="+offset);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         return result;
     }
 
@@ -43,6 +50,11 @@ public class LoadData extends AsyncTask<Integer, Integer, ArrayList<HashMap<Stri
 
     @Override
     protected void onProgressUpdate(Integer... values) {
+        activity.runOnUiThread(new Runnable() {
+            public void run() {
+                Toast.makeText(activity, "Loading", Toast.LENGTH_SHORT).show();
+            }
+        });
         super.onProgressUpdate(values);
     }
 

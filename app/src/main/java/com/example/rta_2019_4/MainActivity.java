@@ -1,27 +1,23 @@
 package com.example.rta_2019_4;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.NavigationUI;
+
+import androidx.lifecycle.MutableLiveData;
 import androidx.viewpager.widget.ViewPager;
 
 import android.Manifest;
-import android.app.ActionBar;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.ContextMenu;
-import android.view.MenuItem;
-import android.view.View;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
+import android.os.Bundle;
+import android.widget.Toast;
+
 import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -47,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         viewPager.setAdapter(viewPageAdapter);
         tabLayout.setupWithViewPager(viewPager);
+
     }
 
     private void requestPermission() {
