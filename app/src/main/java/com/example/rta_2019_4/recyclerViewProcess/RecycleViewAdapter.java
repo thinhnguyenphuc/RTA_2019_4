@@ -46,6 +46,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
     public void onBindViewHolder(@NonNull RecycleViewAdapter.ViewHolder holder, int position) {
         HashMap<String,String> item = hashMaps.get(position);
         String tmp = "";
+        tmp += "country_id: "+item.get("country_id")+"\n";
         tmp += "region: "+item.get("region")+"\n";
         tmp +="country: "+item.get("country")+"\n";
         tmp += "dyad_name: "+item.get("dyad_name")+"\n";

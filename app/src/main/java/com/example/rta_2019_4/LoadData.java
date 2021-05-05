@@ -86,12 +86,12 @@ public class LoadData extends AsyncTask<Integer, Integer, ArrayList<HashMap<Stri
         ArrayList<HashMap<String,String>>  result = new ArrayList<HashMap<String, String>>();
 
         while (allLine != null) {
-            allLine = allLine.substring(1,allLine.length()-1);
+            allLine = allLine.substring(2,allLine.length()-2);
             String[] line = allLine.split("\\},\\{");
             for (int k = 0 ;k<line.length;k++){
                 HashMap<String,String> hashMap = new HashMap<>();
                 data = line[k];
-                data = data.substring(2,data.length()-2);
+                data = data.substring(1,data.length()-1);
                 String[] tmp1 = data.split("\",\"");
                 for(int i=0;i<tmp1.length;i++){
                     String[] tmp2 = tmp1[i].split("\":\"");

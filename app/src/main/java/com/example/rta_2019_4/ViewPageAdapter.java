@@ -23,7 +23,7 @@ public class ViewPageAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:{ return listFragment; }
-            case 1:{ return new MapFragment(); }
+            case 1:{ return mapFragment; }
             default: return listFragment;
         }
     }
