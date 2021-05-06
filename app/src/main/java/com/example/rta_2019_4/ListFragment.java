@@ -65,7 +65,8 @@ public class ListFragment extends Fragment {
         return view;
     }
     private void loadMore(RecycleViewAdapter recycleViewAdapter){
-        LoadData loadData = new LoadData(getActivity(),limit, offset+5, new AsyncReponse() {
+        this.offset +=5;
+        LoadData loadData = new LoadData(getActivity(),limit, offset, new AsyncReponse() {
             @Override
             public void processDataFinish(ArrayList<HashMap<String, String>> hashMaps) {
                 for (int i=0;i<hashMaps.size();i++){
